@@ -15,6 +15,7 @@ module Wisper
         listener = class_name.constantize
         listener.public_send(event, *args)
       end
+      ruby2_keywords(:perform)
     end
 
     def self.register
