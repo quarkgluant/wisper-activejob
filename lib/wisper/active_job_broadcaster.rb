@@ -11,9 +11,9 @@ module Wisper
     class Wrapper < ::ActiveJob::Base
       queue_as :default
 
-      def perform(class_name, event, kwargs)
+      def perform(class_name, event, args)
         listener = class_name.constantize
-        listener.public_send(event, **kwargs)
+        listener.public_send(event, *args)
       end
     end
 
